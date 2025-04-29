@@ -4,7 +4,7 @@ A place to explore some work with LLMs.
 
 Start with [this data](https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/md_pres_county.csv).
 
-The site worked pretty well as is, it did a good job at having working drop down menus and it even allowed you to switch from statewide results to county result. It even included colors based on party which was good. 
+The site initally worked pretty well as is, it did a good job at having working drop down menus and it even allowed you to switch from statewide results to county results. It also included colors based on the party choices which was good. 
 
 Improving the link did not help at all, at first I wanted to make it more interactive and have more maps and charts but those did not work. They charts did not pop up when clicking on the different features that were on the dropdown menu. I even then went back and asked it to add a button that shows democrats and republicans votes and to fix the javascript and it attempted but I ran out of free messages with Claude.  
 
