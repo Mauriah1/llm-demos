@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maryland Election Results</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Maryland 2024 Election Results</h1>
+            <div class="subtitle">Interactive Election Data Visualization</div>
+        </header>
+        
+        <nav class="view-selector">
+            <button id="statewide-btn" class="active">Statewide Results</button>
+            <button id="county-btn">County Results</button>
+            <button id="map-btn">Election Map</button>
+            <button id="compare-btn">Compare Counties</button>
+        </nav>
+        
+        <div id="statewide-view" class="view-content">
+            <h2>Statewide Results</h2>
+            <div class="stat-cards">
+                <div class="stat-card">
+                    <div class="stat-title">Total Votes</div>
+                    <div id="total-votes" class="stat-value">0</div>
+                </div>
+                <div class="stat-card winner-card">
+                    <div class="stat-title">Winner</div>
+                    <div id="winner-name" class="stat-value">Loading...</div>
+                    <div id="winner-percent" class="stat-subvalue">0%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Margin</div>
+                    <div id="victory-margin" class="stat-value">0</div>
+                </div>
+            </div>
+            
+            <div class="visual-toggle">
+                <button id="chart-type-bar" class="active">Bar Chart</button>
+                <button id="chart-type-pie">Pie Chart</button>
+                <button id="chart-type-table">Table</button>
+            </div>
+            
+            <div class="results-container">
+                <div id="statewide-totals" class="totals"></div>
+                <div id="statewide-chart" class="chart-container">
+                    <canvas id="statewide-chart-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div id="county-view" class="view-content hidden">
+            <div class="county-selector">
+                <label for="county-dropdown">Select County:</label>
+                <select id="county-dropdown"></select>
+            </div>
+            
+            <h2 id="county-name">County Results</h2>
+            
+            <div class="county-stats">
+                <div class="stat-card">
+                    <div class="stat-title">Total Votes</div>
+                    <div id="county-total-votes" class="stat-value">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Turnout Rank</div>
+                    <div id="county-turnout-rank" class="stat-value">-</div>
+                </div>
+            </div>
+            
+            <div class="visual-toggle">
+                <button id="county-chart-type-bar" class="active">Bar Chart</button>
+                <button id="county-chart-type-pie">Pie Chart</button>
+                <button id="county-chart-type-table">Table</button>
+            </div>
+            
+            <div class="results-container">
+                <div id="county-totals" class="totals"></div>
+                <div id="county-chart" class="chart-container">
+                    <canvas id="county-chart-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div id="map-view" class="view-content hidden">
+            <h2>Maryland Electoral Map</h2>
+            <div class="map-legend">
+                <div class="legend-item"><span class="color-box harris-color"></span> Harris majority</div>
+                <div class="legend-item"><span class="color-box trump-color"></span> Trump majority</div>
+                <div class="legend-item"><span class="color-box tie-color"></span> Tie/Close race</div>
+            </div>
+            <div class="map-container">
+                <div id="md-map" class="maryland-map">
+                    <!-- Map will be generated via JavaScript -->
+                </div>
+                <div id="map-county-info" class="map-info-panel">
+                    <h3>Click on a county to see details</h3>
+                    <div id="map-county-details"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="compare-view" class="view-content hidden">
+            <h2>Compare Counties</h2>
+            <div class="county-compare-selectors">
+                <div class="compare-selector">
+                    <label for="county-a-dropdown">County A:</label>
+                    <select id="county-a-dropdown"></select>
+                </div>
+                <div class="compare-selector">
+                    <label for="county-b-dropdown">County B:</label>
+                    <select id="county-b-dropdown"></select>
+                </div>
+            </div>
+            
+            <div class="compare-container">
+                <div id="compare-county-a" class="compare-county">
+                    <h3 id="county-a-name">County A</h3>
+                    <div id="county-a-stats" class="county-stats-compact"></div>
+                    <canvas id="county-a-chart-canvas" height="200"></canvas>
+                </div>
+                <div class="compare-divider">VS</div>
+                <div id="compare-county-b" class="compare-county">
+                    <h3 id="county-b-name">County B</h3>
+                    <div id="county-b-stats" class="county-stats-compact"></div>
+                    <canvas id="county-b-chart-canvas" height="200"></canvas>
+                </div>
+            </div>
+            
+            <div class="comparison-metrics">
+                <h3>Comparison Metrics</h3>
+                <table id="comparison-table" class="comparison-table"></table>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Interactive Maryland Election Results Visualization | Data based on 2024 election results</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
